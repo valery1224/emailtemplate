@@ -1,0 +1,541 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:v="urn:schemas-microsoft-com:vml" xmlns:o="urn:schemas-microsoft-com:office:office">
+<head>
+	<meta charset="utf-8"> 
+	<meta name="viewport" content="width=device-width">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" /> <!-- Forcing initial-scale shouldn't be necessary -->
+	<meta http-equiv="X-UA-Compatible" content="IE=edge"> <!-- Use the latest (edge) version of IE rendering engine -->
+    <meta name="x-apple-disable-message-reformatting">  <!-- Disable auto-scale in iOS 10 Mail entirely -->
+	<title></title> <!-- The title tag shows in email notifications, like Android 4.4. -->
+    <link rel="stylesheet"
+          href="https://fonts.googleapis.com/css?family=PTRootUI-Bold">
+	<link href='https://fonts.googleapis.com/css?family=Roboto:300,400' rel='stylesheet' type='text/css'>
+	<link href="https://fonts.googleapis.com/css?family=PT+Sans" rel="stylesheet">
+    <style>
+		/* What it does: Remove spaces around the email design added by some email clients. */
+		/* Beware: It can remove the padding / margin and add a background color to the compose a reply window. */
+       /*@font-face {
+            font-family: PT_ROOT;
+            font-weight: bold;
+            src: url("https://github.com/paratype-fonts/fonts/blob/master/ofl/ptrootui/PTRootUI-Bold.ttf") format("opentype");
+           /* src: url("path/PT Root UI_Light.otf") format("opentype");
+            src: url("path/PT Root UI_Medium.otf") format("opentype");
+            src: url("path/PT Root UI_Regular.otf") format("opentype");*/
+        
+
+        html,
+        body {
+	        margin: 20px auto !important;
+            padding: 0 !important;
+/*            height: 100% !important;*/
+            height: auto !important;
+            width: 100% !important;
+            font-family: : "Roboto, san-serif";
+        }
+
+        /* What it does: Stops email clients resizing small text. */
+        * {
+            -ms-text-size-adjust: 100%;
+            -webkit-text-size-adjust: 100%;
+            box-sizing: border-box !important;
+        }
+
+        /* What it does: Centers email on Android 4.4 */
+        div[style*="margin: 16px 0"] {
+            margin:0 !important;
+        }
+
+        /* What it does: Stops Outlook from adding extra spacing to tables. */
+        table,
+        td {
+            mso-table-lspace: 0pt !important;
+            mso-table-rspace: 0pt !important;
+        }
+
+        /* What it does: Fixes webkit padding issue. Fix for Yahoo mail table alignment bug. Applies table-layout to the first 2 tables then removes for anything nested deeper. */
+        table {
+            border-spacing: 0 !important;
+            border-collapse: collapse !important;
+            table-layout: fixed !important;
+            margin: 0 auto !important;
+        }
+        table table table {
+            table-layout: auto;
+        }
+
+        /* What it does: Uses a better rendering method when resizing images in IE. */
+        img {
+            -ms-interpolation-mode:bicubic;
+        }
+
+        /* What it does: A work-around for email clients meddling in triggered links. */
+        *[x-apple-data-detectors],	/* iOS */
+        .x-gmail-data-detectors, 	/* Gmail */
+        .x-gmail-data-detectors *,
+        .aBn {
+            border-bottom: 0 !important;
+            cursor: default !important;
+            color: inherit !important;
+            text-decoration: none !important;
+            font-size: inherit !important;
+            font-family: inherit !important;
+            font-weight: inherit !important;
+            line-height: inherit !important;
+        }
+        
+        /* What it does: Prevents Gmail from displaying an download button on large, non-linked images. */
+        .a6S {
+	        display: none !important;
+	        opacity: 0.01 !important;
+        }
+        /* If the above doesn't work, add a .g-img class to any image in question. */
+        img.g-img + div {
+	        display:none !important;
+	   	}
+
+        /* What it does: Prevents underlining the button text in Windows 10 */
+        .button-link {
+            text-decoration: none !important;
+        }
+
+        /* What it does: Removes right gutter in Gmail iOS app: https://github.com/TedGoas/Cerberus/issues/89  */
+        /* Create one of these media queries for each additional viewport size you'd like to fix */
+        /* Thanks to Eric Lepetit (@ericlepetitsf) for help troubleshooting */
+        @media only screen and (min-device-width: 375px) and (max-device-width: 413px) { /* iPhone 6 and 6+ */
+            .email-container {
+                min-width: 320px !important;
+            }
+        }
+    </style>
+    
+    <!-- Progressive Enhancements -->
+    <style>
+        /* What it does: Hover styles for buttons */
+        .button-td,
+        .button-a {
+            transition: all 100ms ease-in;
+        }
+        .button-td:hover,
+        .button-a:hover {
+            opacity: 0.9;
+        }
+        .button-read-more {
+            color: #427BFB;
+            font-size: 20px; 
+            font-family: 'roboto',sans-serif; 
+            line-height: 1.3; 
+            text-transform: uppercase;
+            text-decoration: none;
+            font-weight: 600; 
+        }
+        .btn-social {
+            width: 42px;
+            height: 42px; 
+            border-radius: 50%; 
+            padding-top: 20px;
+            display: inline-block;
+        }
+
+        *{
+            box-sizing: border-box;
+        }
+        /* Media Queries */
+        @media screen and (max-width: 830px) {
+
+            .email-container {
+                width: 100% !important;
+                margin: auto !important;
+            }
+
+            /* What it does: Forces elements to resize to the full width of their container. Useful for resizing images beyond their max-width. */
+            .fluid {
+                max-width: 100% !important;
+                height: auto !important;
+                margin-left: auto !important;
+                margin-right: auto !important;
+            }
+
+            /* What it does: Forces table cells into full-width rows. */
+            .stack-column,
+            .stack-column-center {
+                display: block !important;
+                width: 100% !important;
+                max-width: 100% !important;
+                direction: ltr !important;
+                box-sizing: border-box;
+                padding: 0 15px 19px !important;
+            }
+            /* And center justify these ones. */
+            .stack-column-center {
+                text-align: center !important;
+            }
+
+            /* What it does: Generic utility class for centering. Useful for images, buttons, and nested tables. */
+            .center-on-narrow {
+                text-align: center !important;
+                display: block !important;
+                margin-left: auto !important;
+                margin-right: auto !important;
+                float: none !important;
+            }
+            table.center-on-narrow {
+                display: inline-block !important;
+            }
+
+            /* What it does: Adjust typography on small screens to improve readability */
+			.email-container p {
+				font-size: 17px !important;
+				line-height: 22px !important;
+			}
+            h2{
+                font-size: 55px !important;
+            }
+            h3{
+                height: auto !important;
+            }
+            .container-width{
+                padding: 20px 30px !important;
+            }
+            .button-td {
+                max-width: 100% !important;
+                width: 300px !important;
+            }
+            td.button-td > span {
+                max-width: 100% !important;
+                width: 300px!important;
+                height: auto !important;
+                margin-bottom: -5px;
+            }
+            td.button-td > span img {
+                max-width: 100%;
+            }
+            .button-td a{
+                font-size: 18px !important;
+                padding: 20px 65px 20px 20px !important;
+            }
+        }
+        @media(max-width: 576px){
+            h2{
+                font-size: 35px !important;
+            }
+            .hero-img{
+                width: auto !important;
+            }
+            .hero-img img{
+                max-width: 100%;
+            }
+            .fluid-img{
+                width: auto !important;
+            }
+            .container-width {
+                padding: 20px 20px !important;
+                max-width: 100%;
+                width: 270px;
+                min-width: 260px !important;
+                display: block;
+                float: none !important;
+                text-align: left !important;
+            }
+            .p-30{
+               padding: 9px 30px 30px !important;
+            }
+            .email-body{
+                padding: 20px;
+                display: contents !important;
+            }
+        }
+    </style>
+</head>
+
+<body width="100%" bgcolor="#f0f0f0" style="margin: 20px 0; mso-line-height-rule: exactly;">
+    <center style="width: 100%; background: #f0f0f0; text-align: left;">
+
+        <!-- Visually Hidden Preheader Text : BEGIN -->
+        <div style="display:none;font-size:1px;line-height:1px;max-height:0px;max-width:0px;opacity:0;overflow:hidden;mso-hide:all;font-family: sans-serif;">
+            (Optional) This text will appear in the inbox preview, but not the email body.
+        </div>
+        <!-- Visually Hidden Preheader Text : END -->
+
+        <!-- Email Header : BEGIN -->
+        <table role="presentation" aria-hidden="true" aria-hidden="true" cellspacing="0" cellpadding="0" border="0" align="center" width="810" style="margin: auto;" class="email-container">
+			<tr>
+			    <td style="padding: 35px 0 15px; text-align: center; " bgcolor="#ffffff" width="100%">
+			        <p style="margin: 0;font-weight: 300; font-size:  12px; font-family: 'Roboto',sans-serif; width:352px; margin: 0 auto; line-height: 1.6;">
+			            This email is being sent to you with love from Voicea based on your request to download "5 Steps to a great meeting" white paper
+			        </p>
+			    </td>
+            </tr>
+            <tr>
+				<td style="object-fit: contain; padding: 20px 0 10px; text-align: center" bgcolor="#ffffff" width="100%">
+					<img src="https://s3.amazonaws.com/voice-email-template/images/Header-logo.png" aria-hidden="true" width="131.3" height="26" alt="alt_text" border="0" style="height: auto; background: #ffffff; ">
+				</td>
+			</tr>
+        </table>
+        <!-- Email Header : END -->
+
+        <!-- Email Body : BEGIN -->
+        <table role="presentation" aria-hidden="true" cellspacing="0" cellpadding="0" align="center" width="810" style="margin: auto;padding: 20px; background: #fff;" class="email-container">
+            <tbody style="border: 2px solid #E4ECFF; border-radius: 6px;max-width: 92%; margin:20px auto; display: block;padding-bottom: 40px;" class="email-body">
+
+                <!-- 1 Column Text + Button : BEGIN -->
+                <tr>
+                    <td bgcolor="#ffffff" style="padding: 58px 30px 16px; text-align: left;">
+                        <h1 style="margin: 0; font-family:'roboto', sans-serif; font-size: 25px; line-height: 34px; color: #000; font-weight: 600;">Hi <span style="color: #427BFB">Tim,</span></h1>
+                    </td>
+                </tr>
+                <tr>
+                    <td bgcolor="#ffffff" style="padding: 0 30px 40px; font-family:'roboto', sans-serif; font-size: 18px; line-height: 20px; color: #000; text-align: left;font-weight: 300;line-height: 1.5;">
+                        <p style="margin: 0;">Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur occaecat cupidatat non provident sunt in culpa qui official quia non numquam eius modi tempora incidunt ut labore et dolore magnam.</p>
+                    </td>
+                </tr>
+                <tr>
+                    <td bgcolor="#ffffff" style="padding:10px 0px 60px; font-family: 'roboto', sans-serif; font-size: 15px; line-height: 20px; color: #555555;">
+                        <table role="presentation" aria-hidden="true" cellspacing="0" cellpadding="0" border="0" align="center" style="margin: auto" class="button-td-sec">
+                            <tr>
+                                <td style="text-align: center;width: 450px;" class="button-td" >
+                                <a href="#">
+                                    <span style="display: block;border-radius: 6px 6px 0px 0px;width: 450px;height: 145px;">
+                                    <img src="https://s3.amazonaws.com/voice-email-template/images/whitepaper.png" alt="whitepaper-img"></span>
+                                    <a href="#" style="background: #427BFB; border: 1px solid #427BFB; font-family: 'roboto',sans-serif; font-size: 20px; line-height: 1.1; text-align: left; text-decoration: none; display: block; border-radius: 0px 0px 6px 6px; font-weight: 700;position: relative;padding: 25px 65px 25px 25px;" class="button-a">
+                                        <span style="color:#ffffff;">DOWNLOAD WHITEPAPER</span><span style="float: right; margin-right: -30px;">
+                                            <img src="https://s3.amazonaws.com/voice-email-template/images/cloud-computing.png" alt="download img">
+                                        </span>
+                                    </a>
+                                </a>
+                                </td>
+                            </tr>
+                        </table>
+                        <!-- Button : END -->
+                    </td>
+                </tr>
+                <!-- 1 Column Text + Button : END -->
+
+                <!-- Heading Text : BEGIN -->
+                <tr>
+                    <td valign="middle" style="text-align: center; padding: 9px 20px 30px; font-family:'roboto',sans-serif; font-size: 60; line-height:1.03; color: #000;">
+                        <h2 style="margin: 0;font-size: 70px; font-weight: 700; font-family:'roboto', sans-serif;">Welcome to <span style="color: #427BFB;">Voicea</span></h2>
+                    </td>
+                </tr>
+                <!-- Heading Text : END -->
+                
+                <!-- Heading SubText : BEGIN -->
+                <tr>
+                    <td valign="middle" style="text-align: center; padding: 9px 120px 30px;" class="p-30">
+                        <p style="margin: 0;font-size:26px;font-weight: 300; font-family:'roboto',sans-serif;line-height: 1.3; color: #000;">Lorem ipsum dolor sit amet, consectetur <a href=""><span style="color: #427BFB; font-weight: 300;text-decoration: underline">incididunt</span></a> elit, sed do eiusmod tempor</p>
+                    </td>
+                </tr>
+                <!-- Heading SubText : END -->
+                
+                <!-- Hero Image :  BEGIN -->
+                <tr>
+                    <td style="text-align: center; width: 510px; height: 356px;padding: 46px 0 69px;" class="hero-img">
+                        <img src="https://s3.amazonaws.com/voice-email-template/images/hero-image.png" alt="hero image">
+                    </td>
+                </tr>
+                <!-- Hero Image :  END -->
+                
+                <!-- Heading Text : BEGIN -->
+                <tr>
+                    <td style="text-align: center;padding-bottom: 30px;">
+                        <h2 style="margin: 0;font-size: 70px;font-weight: 700; font-family:'roboto',sans-serif;">Latest from <span style="color: #427BFB;">Voicea</span></h2>
+                    </td>
+                </tr>
+                <!-- Heading Text : End -->
+                
+                <!-- 2 Even Columns : BEGIN -->
+                <tr>
+                    <td bgcolor="#ffffff" align="center" valign="top" style="padding: 10px 0px;">
+                        <table role="presentation" aria-hidden="true" cellspacing="0" cellpadding="0" border="0" width="100%">
+                            <tr>
+                                <!-- Column : BEGIN -->
+                                <td class="stack-column-center" style="padding: 0px 15px 19px 30px;" valign="top">
+                                    <table role="presentation" aria-hidden="true" cellspacing="0" cellpadding="0" border="0">
+                                        <tr>
+                                            <td style="padding: 0px; text-align: center; background: #fff; border-radius: 6px" width="330" height="234" class="fluid-img">
+                                                <img src="https://s3.amazonaws.com/voice-email-template/images/Image.png" aria-hidden="true" width="330" height="240" alt="alt_text" border="0" class="fluid" style="height: auto; background: #dddddd; font-family: 'roboto',sans-serif; font-size: 15px; border-radius: 6px;">
+                                            </td>
+                                        </tr>
+                                        <tr style="margin-top: 15px; display: block;">
+                                            <td style="font-family:'roboto', sans-serif; font-size: 15px; line-height: 20px; color: #555555;  text-align: left;" class="center-on-narrow">
+                                               <h3 style="font-size: 20px;line-height: 1.2;color: #000;font-weight: 'bold';font-family:'roboto',sans-serif; text-transform: capitalize;padding: 5px 0 7px; margin: 0;height:60px;">How AI Is Changing The Face Of Business And The Workplace</h3>
+                                                <p style="margin: 0;font-size:18px;font-family: 'roboto',sans-serif; color: #000; font-weight: 300;line-height:1.4; padding-bottom: 17px;">We are in the midst of a massive transformation which is affecting the future of the workplace as AI based...</p>
+                                                <a class="button-read-more" href="#">READ MORE <span><img src="https://s3.amazonaws.com/voice-email-template/images/arrow_right.png" alt="right arrow"></span></a>
+                                            </td>
+                                        </tr>
+                                    </table>
+                                </td>
+                                <!-- Column : END -->
+                                <!-- Column : BEGIN -->
+                                <td class="stack-column-center" style="padding: 0px 30px 19px 15px;" valign="top">
+                                    <table role="presentation" aria-hidden="true" cellspacing="0" cellpadding="0" border="0">
+                                        <tr>
+                                            <td style="padding: 0px; text-align: center; background: #fff; border-radius: 6px" width="330" height="234" class="fluid-img">
+                                                <img src="https://s3.amazonaws.com/voice-email-template/images/Image-1.png" aria-hidden="true" width="330" height="240" alt="alt_text" border="0" class="fluid" style="height: auto; background: #dddddd; font-family: 'roboto',sans-serif; font-size: 15px; border-radius: 6px;">
+                                            </td>
+                                        </tr>
+                                        <tr style="margin-top: 15px; display: block;">
+                                            <td style="font-family:'roboto', sans-serif; font-size: 15px; line-height: 20px; color: #555555; text-align: left;" class="center-on-narrow">
+                                               <h3 style="font-size: 20px;line-height: 1.2;color: #000;font-weight: 'bold';font-family:'roboto',sans-serif; text-transform: capitalize;padding: 5px 0 7px; margin: 0;height:60px;">Save 6 Hours Per Week And Have Smarter Meetings With Voicea</h3>
+                                                <p style="margin: 0;font-size:18px;font-family: 'roboto',sans-serif; color: #000; font-weight: 300;line-height:1.4; padding-bottom: 17px;">We think a Smarter Meeting is one where what happens afterward is more efficient and more effective because...</p>
+                                                <a class="button-read-more" href="#">READ MORE <span><img src="https://s3.amazonaws.com/voice-email-template/images/arrow_right.png" alt="right arrow"></span></a>
+                                            </td>
+                                        </tr>
+                                    </table>
+                                </td>
+                                <!-- Column : END -->
+                            </tr>
+                        </table>
+                    </td>
+                </tr>
+                <!-- 2 Even Columns : END -->
+
+                <!-- 2 Even Columns : BEGIN -->
+                <tr>
+                    <td bgcolor="#ffffff" align="center" valign="top" style="padding: 20px 0px 10px;">
+                        <table role="presentation" aria-hidden="true" cellspacing="0" cellpadding="0" border="0" width="100%">
+                            <tr>
+                                <!-- Column : BEGIN -->
+                                <td class="stack-column-center" style="padding: 0px 15px 19px 30px;" valign="top">
+                                    <table role="presentation" aria-hidden="true" cellspacing="0" cellpadding="0" border="0">
+                                        <tr>
+                                            <td style="padding: 0px; text-align: center; background: #fff; border-radius: 6px" width="330" height="234" class="fluid-img">
+                                                <img src="https://s3.amazonaws.com/voice-email-template/images/Image-2.png" aria-hidden="true" width="330" height="240" alt="alt_text" border="0" class="fluid" style="height: auto; background: #dddddd; font-family: 'roboto',sans-serif; font-size: 15px; border-radius: 6px;">
+                                            </td>
+                                        </tr>
+                                        <tr style="margin-top: 15px; display: block;">
+                                            <td style="font-family:'roboto', sans-serif; font-size: 15px; line-height: 20px; color: #555555;  text-align: left;" class="center-on-narrow">
+                                               <h3 style="font-size: 20px;line-height: 1.2;color: #000;font-weight: 'bold';font-family:'roboto',sans-serif; text-transform: capitalize;padding: 5px 0 7px; margin: 0;height:60px;">Voicea Eases Your Need To Attend Every Meeting At Work... With N...</h3>
+                                                <p style="margin: 0;font-size:18px;font-family: 'roboto',sans-serif; color: #000; font-weight: 300;line-height:1.4; padding-bottom: 17px;">Today we’re excited to announce the release of Teams, our new enterprise offering that is specifically designed to...</p>
+                                                <a class="button-read-more" href="#">READ MORE <span><img src="https://s3.amazonaws.com/voice-email-template/images/arrow_right.png" alt="right arrow"></span></a>
+                                            </td>
+                                        </tr>
+                                    </table>
+                                </td>
+                                <!-- Column : END -->
+                                <!-- Column : BEGIN -->
+                                <td class="stack-column-center" style="padding: 0px 30px 19px 15px;" valign="top">
+                                    <table role="presentation" aria-hidden="true" cellspacing="0" cellpadding="0" border="0">
+                                        <tr>
+                                            <td style="padding: 0px; text-align: center; background: #fff; border-radius: 6px" width="330" height="234" class="fluid-img">
+                                                <img src="https://s3.amazonaws.com/voice-email-template/images/Image-3.png" aria-hidden="true" width="330" height="240" alt="alt_text" border="0" class="fluid" style="height: auto; background: #dddddd; font-family: 'roboto',sans-serif; font-size: 15px; border-radius: 6px;">
+                                            </td>
+                                        </tr>
+                                        <tr style="margin-top: 15px; display: block;">
+                                            <td style="font-family:'roboto', sans-serif; font-size: 15px; line-height: 20px; color: #555555; text-align: left;" class="center-on-narrow">
+                                               <h3 style="font-size: 20px;line-height: 1.2;color: #000;font-weight: 'bold';font-family:'roboto',sans-serif; text-transform: capitalize;padding: 5px 0 7px; margin: 0;height:40px;">The Future Of Voice</h3><br>
+                                                <p style="margin: 0;font-size:18px;font-family: 'roboto',sans-serif; color: #000; font-weight: 300;line-height:1.4; padding-bottom: 17px;">Machines need to be taught how to interact with us (through our voice) as opposed to humans being taught...</p>
+                                                <a class="button-read-more" href="#">READ MORE <span><img src="https://s3.amazonaws.com/voice-email-template/images/arrow_right.png" alt="right arrow"></span></a>
+                                            </td>
+                                        </tr>
+                                    </table>
+                                </td>
+                                <!-- Column : END -->
+                            </tr>
+                        </table>
+                    </td>
+                </tr>
+                <!-- 2 Even Columns : END -->
+                
+                <!-- 2 Even Columns : BEGIN -->
+                <tr>
+                    <td bgcolor="#ffffff" align="center" valign="top" style="padding: 20px 0px 10px;">
+                        <table role="presentation" aria-hidden="true" cellspacing="0" cellpadding="0" border="0" width="100%">
+                            <tr>
+                                <!-- Column : BEGIN -->
+                                <td class="stack-column-center" style="padding: 0px 15px 19px 30px;" valign="top">
+                                    <table role="presentation" aria-hidden="true" cellspacing="0" cellpadding="0" border="0">
+                                        <tr>
+                                            <td style="padding: 0px; text-align: center; background: #fff; border-radius: 6px" width="330" height="234" class="fluid-img">
+                                                <img src="https://s3.amazonaws.com/voice-email-template/images/Image-3.png" aria-hidden="true" width="330" height="240" alt="alt_text" border="0" class="fluid" style="height: auto; background: #dddddd; font-family: 'roboto',sans-serif; font-size: 15px; border-radius: 6px;">
+                                            </td>
+                                        </tr>
+                                        <tr style="margin-top: 15px; display: block;">
+                                            <td style="font-family:'roboto', sans-serif; font-size: 15px; line-height: 20px; color: #555555;  text-align: left;" class="center-on-narrow">
+                                               <h3 style="font-size: 20px;line-height: 1.2;color: #000;font-weight: 'bold';font-family:'roboto',sans-serif; text-transform: capitalize;padding: 5px 0 7px; margin: 0;">The Rise Of Virtual Employee Assistants (#VoiceFirst)</h3>
+                                                <p style="margin: 0;font-size:18px;font-family: 'roboto',sans-serif; color: #000; font-weight: 300;line-height:1.4; padding-bottom: 17px;">Gartner recently released a report that has massive implications on the category of virtual assistants and...</p>
+                                                <a class="button-read-more" href="#">READ MORE <span><img src="https://s3.amazonaws.com/voice-email-template/images/arrow_right.png" alt="right arrow"></span></a>
+                                            </td>
+                                        </tr>
+                                    </table>
+                                </td>
+                                <!-- Column : END -->
+                                <!-- Column : BEGIN -->
+                                <td class="stack-column-center" style="padding: 0px 30px 19px 15px;" valign="top">
+                                    <table role="presentation" aria-hidden="true" cellspacing="0" cellpadding="0" border="0">
+                                        <tr>
+                                            <td style="padding: 0px; text-align: center; background: #fff; border-radius: 6px" width="330" height="234" class="fluid-img">
+                                                <img src="https://s3.amazonaws.com/voice-email-template/images/Image-4.png" aria-hidden="true" width="330" height="240" alt="alt_text" border="0" class="fluid" style="height: auto; background: #dddddd; font-family: 'roboto',sans-serif; font-size: 15px; border-radius: 6px;">
+                                            </td>
+                                        </tr>
+                                        <tr style="margin-top: 15px; display: block;">
+                                            <td style="font-family:'roboto', sans-serif; font-size: 15px; line-height: 20px; color: #555555; text-align: left;" class="center-on-narrow">
+                                               <h3 style="font-size: 20px;line-height: 1.2;color: #000;font-weight: 'bold';font-family:'roboto',sans-serif; text-transform: capitalize;padding: 5px 0 7px; margin: 0;">Welcome To #VoiceFirst @Work</h3><br>
+                                                <p style="margin: 0;font-size:18px;font-family: 'roboto',sans-serif; color: #000; font-weight: 300;line-height:1.4; padding-bottom: 17px;">CES is when every company under the sun tries to woo the media and general populace that what they have is the...</p>
+                                                <a class="button-read-more" href="#">READ MORE <span><img src="https://s3.amazonaws.com/voice-email-template/images/arrow_right.png" alt="right arrow"></span></a>
+                                            </td>
+                                        </tr>
+                                    </table>
+                                </td>
+                                <!-- Column : END -->
+                            </tr>
+                        </table>
+                    </td>
+                </tr>
+                <!-- 2 Even Columns : END -->
+            </tbody>
+        </table>
+        <!-- Email Body : END -->
+
+        <!-- Email Footer : BEGIN -->
+        <table role="presentation" aria-hidden="true" cellspacing="0" cellpadding="0" border="0" align="center" width="810" style="margin: auto;background: #fff;padding: 20px;" class="email-container">
+            <!-- Contact Info : BEGIN -->
+            <tr>
+               <!-- Sender Detail : Start -->
+               <td style="padding: 40px 60px;font-size: 14px; font-family:'roboto', sans-serif; line-height:1.5; text-align: left; color: #000;" valign="top" class="container-width">
+                   <table role="presentation" aria-hidden="true" style="margin: 0px !important;">
+                       <tr>
+                           <td>
+                               <h4 style="font-size: 14px; font-family: 'roboto',sans-serif; color: #000;line-height: 1.5;margin: 0; font-weight: 400;">Cory Treffiletti </h4>
+                               <p style="font-size: 14px; font-family: 'roboto',sans-serif; color: #7A89AF;line-height: 1.5;margin: 0; font-weight: 400;">Chief Marketing Officer, Voicea</p>
+                               <p style="font-size: 14px; font-family: 'roboto',sans-serif; color: #7A89AF;line-height: 1.5;margin: 0; font-weight: 400;"><a href="mailto:coryt@voicea.ai" style="text-decoration: none;color: #7A89AF;">coryt@voicea.ai</a></p>
+                               <span style="width: 42px;height: 42px; border-radius: 50%; padding-top: 20px;display: inline-block;"><img src="https://s3.amazonaws.com/voice-email-template/images/Cory.png" alt="cory img"></span>
+                           </td>
+                       </tr>
+                   </table>
+               </td>
+               <!-- Sender Detail : End -->
+               <!-- Social media link : Start -->
+                <td style="padding: 40px 60px;font-size: 14px; font-family:'roboto', sans-serif; line-height:1.5; text-align: right; color: #000;float: right;" valign="top" class="container-width">
+                   <table role="presentation" aria-hidden="true" style="margin: 0px !important;">
+                       <tr>
+                           <td>
+                                <p style="font-size: 14px; font-family: 'roboto',sans-serif; color: #7A89AF;line-height: 1.5;margin: 0; font-weight: 400;"><a href="#" style="text-decoration: none;color: #7A89AF;">Privacy Policy</a></p>
+                                <p style="font-size: 14px; font-family: 'roboto',sans-serif; color: #7A89AF;line-height: 1.5;margin: 0; font-weight: 400;"><a href="#" style="text-decoration: none;color: #7A89AF;">Contact us</a></p>
+                                <p style="font-size: 14px; font-family: 'roboto',sans-serif; color: #7A89AF;line-height: 1.5;margin: 0; font-weight: 400;"><a href="#" style="text-decoration: none;color: #7A89AF;">Unsubscribe</a></p>
+                                <ul style="list-style-type: none; margin: 0;padding: 0;">
+                                    <li style="display: inline-block; padding: 0 5px"><a class="btn-social" href="#" target="_blank"><img src="https://s3.amazonaws.com/voice-email-template/images/facebook.png" alt="facebook icon"></a></li>
+                                    <li style="display: inline-block; padding: 0 5px"><a class="btn-social" href="#" target="_blank"><img src="https://s3.amazonaws.com/voice-email-template/images/twitter.png" alt="twitter icon"></a></li>
+                                    <li style="display: inline-block; padding: 0 5px"><a class="btn-social" href="#" target="_blank"><img src="https://s3.amazonaws.com/voice-email-template/images/linkedin.png" alt="linkedin icon"></a></li>
+                                    <li style="display: inline-block; padding: 0 0px 0 5px"><a class="btn-social" href="#" target="_blank"><img src="https://s3.amazonaws.com/voice-email-template/images/medium.png" alt="medium icon"></a></li>
+                                </ul>
+                           </td>
+                       </tr>
+                   </table>
+               </td>
+               <!-- Social media link : Start -->
+            </tr>
+            <!-- Contact Info : END -->
+            <!-- Copyrights sec : BEGIN -->
+            <tr>
+                <td style="padding: 20px 30px 50px;width: 100%;font-size: 12px; font-family:'roboto', sans-serif; line-height:1.57; text-align: center; color: #7A89AF;" colspan="2">
+                    <p style="font-size: 14px;font-weight: 300; font-family: 'roboto',sans-serif;color: #7A89AF;line-height: 1.57;margin: 0;">© 2019 Voicea. All rights reserved.</p>
+                    <p style="font-size: 14px;font-weight: 300; font-family: 'roboto',sans-serif;color: #7A89AF;line-height: 1.57;margin: 0;">605 Ellis St, Suite 100 Mountain View, CA 94043</p>
+                </td>
+            </tr>
+            <!-- Copyrights sec : END -->
+        </table>
+        <!-- Email Footer : END -->
+
+    </center>
+</body>
+</html>

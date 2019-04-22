@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="42" height="42" viewBox="0 0 42 42">
+  <defs>
+    <clipPath id="clip-path">
+      <ellipse id="Ellipse_2" data-name="Ellipse 2" cx="21" cy="21" rx="21" ry="21" transform="translate(0 0)" fill="#fff"/>
+    </clipPath>
+  </defs>
+  <g id="Mask_Group_7" data-name="Mask Group 7" transform="translate(0)" clip-path="url(#clip-path)">
+    <path id="Indesign" d="M571.845,493.692a21,21,0,1,0,21,21,21,21,0,0,0-21-21Zm-5.25,30.339h-3.869V511.32H566.6Zm-2.155-13.811h0a2.285,2.285,0,1,1,1.725-.628,2.3,2.3,0,0,1-1.725.628Zm18.181,13.811h-4.974v-6.466c0-1.713-.552-2.874-2.1-2.874a2.256,2.256,0,0,0-2.155,1.547,3.062,3.062,0,0,0-.111,1.05v6.742h-4.256s.055-11.6,0-12.711h4.255v2.155a4.766,4.766,0,0,1,4.145-2.1c2.818,0,5.25,1.824,5.25,5.692v6.963Z" transform="translate(-550.846 -493.692)" fill="#0377b9"/>
+  </g>
+</svg>
